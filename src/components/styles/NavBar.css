@@ -1,0 +1,18 @@
+nav.navbar{
+    padding: 1vw 4vw;
+    background: 0 0/cover no-repeat,linear-gradient(60deg,#562db5,#19afc9);
+}
+.navbar-nav a{
+    color: #fff !important;
+}
+
+.dropdown-menu{
+    background: #5e696d;
+}
+.dropdown-item{
+    background: transparent !important;
+}
+
+.navbar-nav a:hover, .nav-link.active, .dropdown-item.active{
+    color: #fecd35 !important;
+}

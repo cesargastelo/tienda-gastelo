@@ -1,10 +1,11 @@
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import Cartwidget from './CartWidget';
+
+import './styles/NavBar.css';
 
 const Navbartop = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{padding: "8px 35px"}}>
+        <Navbar collapseOnSelect expand="lg" variant="dark">
             <Navbar.Brand href="#home">Tienda-Gastelo</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -14,10 +15,9 @@ const Navbartop = () => {
                         <NavDropdown.Item href="#action/3.1">Category one</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.2">Category two</NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Category three</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                     </NavDropdown>
                     <Nav.Link href="#contact">Contact</Nav.Link>
+                    <Cartwidget />
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

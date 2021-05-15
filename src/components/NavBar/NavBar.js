@@ -1,12 +1,13 @@
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
-import Cartwidget from './CartWidget';
+import logo from "../../assets/images/logo2-ecommerce-app.png";
+import Cartwidget from '../CartWidget/CartWidget';
 
-import './styles/NavBar.css';
+import './assets/NavBar.css';
 
 const Navbartop = () => {
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark">
-            <Navbar.Brand href="#home">Tienda-Gastelo</Navbar.Brand>
+            <Navbar.Brand href="#home"><img src={logo} className="logo-main" alt="logo" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto" style={{marginLeft: "auto"}}>

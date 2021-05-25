@@ -2,7 +2,7 @@ import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
 import logo from "../../assets/images/logo2-ecommerce-app.png";
 import Cartwidget from '../CartWidget/CartWidget';
 
-import './assets/NavBar.css';
+import './NavBar.css';
 
 const Navbartop = () => {
     return (

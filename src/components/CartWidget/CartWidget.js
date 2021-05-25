@@ -1,6 +1,6 @@
 import {Cart4} from 'react-bootstrap-icons';
 
-import './assets/CartWidget.css';
+import './CartWidget.css';
 
 const Cartwidget = () => {
     return (

@@ -1,0 +1,10 @@
+.items-products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 60px;
+}
+.card-columns{
+    flex-direction: column;
+    margin: 15px 15px;
+}

@@ -1,7 +1,7 @@
 .add-to-cart-panel{
-    max-width: 300px;
+    max-width: 210px;
     margin: 0 auto;
-    margin-top: 60px;
+    margin-top: 25px;
 }
 .cart-counter{
     position: relative;
@@ -21,6 +21,9 @@
     line-height: 1;
     padding: 7px 5px;
     background: transparent;
+}
+.cart-counter button:disabled{
+    color: rgba(0,0,0,0.3);
 }
 .dash-btn{
     position: absolute;

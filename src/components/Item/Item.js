@@ -1,12 +1,12 @@
 import { Card, Button, CardColumns } from 'react-bootstrap';
-import ItemCount from '../ItemCount/ItemCount';
+import ItemDetail from '../ItemDetail/ItemDetail';
+import { useState } from 'react';
 
 import './Item.css';
 
-const Item = ({index, title, description, price, img}) => {
+const Item = ({index, title, description, price, img, onSearch}) => {
 
     return (
-        <CardColumns>
         <Card idproduct={index} style={{ width: '18rem' }}>
             <Card.Img variant="top" src={img} />
             <Card.Body>
@@ -15,10 +15,9 @@ const Item = ({index, title, description, price, img}) => {
                 {description}
                 </Card.Text>
                 <Card.Subtitle className="mb-2 text-muted">${price}</Card.Subtitle>
-                <ItemCount stock={5} initial={1} />
+                <Button variant="primary" onClick={() => onSearch(index)}>See Details</Button>
             </Card.Body>
         </Card>
-        </CardColumns>
     )
 }
 

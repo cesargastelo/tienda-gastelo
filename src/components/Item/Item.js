@@ -1,21 +1,19 @@
-import { Card, Button, CardColumns } from 'react-bootstrap';
-import ItemDetail from '../ItemDetail/ItemDetail';
-import { useState } from 'react';
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import './Item.css';
 
-const Item = ({index, title, description, price, img, onSearch}) => {
+const Item = ({index, title, price, img}) => {
+
+    const slugName = title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
 
     return (
-        <Card idproduct={index} style={{ width: '18rem' }}>
+        <Card idproduct={index}>
             <Card.Img variant="top" src={img} />
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
-                <Card.Text>
-                {description}
-                </Card.Text>
                 <Card.Subtitle className="mb-2 text-muted">${price}</Card.Subtitle>
-                <Button variant="primary" onClick={() => onSearch(index)}>See Details</Button>
+                <Link to={"/item/" + slugName} className="btn btn-primary">Ver detalle</Link>
             </Card.Body>
         </Card>
     )

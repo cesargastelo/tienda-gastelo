@@ -1,60 +1,45 @@
-import Item from '../Item/Item';
-import producto01 from "../../assets/images/producto-01.jpg";
-import producto02 from "../../assets/images/producto-02.jpg";
-import producto03 from "../../assets/images/producto-03.jpg";
 import { useState, useEffect } from 'react';
+import { Spinner } from 'react-bootstrap';
+import { useParams } from 'react-router';
+import Products from '../../assets/Products';
+import Item from '../Item/Item';
 
-const ItemList = ({onSearch}) => {
-    const [products, setProduct] = useState(null);
-
-    const Products = [
-        {
-            id: 1,
-            title: 'Items A',
-            description: 'this is a new product',
-            price: '25.00',
-            pictureUrl: producto01
-        },
-        {
-            id: 2,
-            title: 'Items B',
-            description: 'this is a new product',
-            price: '55.00',
-            pictureUrl: producto02
-        },
-        {
-            id: 3,
-            title: 'Items C',
-            description: 'this is a new product',
-            price: '75.00',
-            pictureUrl: producto03
-        }
-    ]
+const ItemList = () => {
+    const [items, setItems] = useState([]);
+    const [loader, setLoader] = useState(false);
+    const { catId } = useParams();
+    
     useEffect(() => {
-        const task = new Promise ((resolve) => {
+        const task = new Promise ( resolve => {
+            setLoader(true);
             setTimeout(() => {
                 resolve(Products);
             }, 2000);
         });
 
-        task.then(function (value) {
-            setProduct(Products);
+        catId ? task.then(res => {
+            setItems(res.filter(i => i.category.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-') === catId));
+            setLoader(false);
+        })
+        : task.then(res => {
+            setItems(res);
+            setLoader(false);
         });
-    });
+    }, [catId]);
 
     return (
         <div className="items-products">
             <>
-            {products?.map((product) => (
+            {loader && <Spinner animation="border" variant="primary" />}
+            {!loader && items?.map((product) => 
                 <Item
                     index={product.id}
                     title={product.title}
                     description={product.description}
                     price={product.price}
                     img={product.pictureUrl}
-                    onSearch={onSearch}
                 />
-            ))}
+            )}
             </>
         </div>
     )

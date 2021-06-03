@@ -1,10 +1,12 @@
 .add-to-cart-panel{
-    max-width: 210px;
-    margin: 0 auto;
-    margin-top: 25px;
+    max-width: 300px;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
 }
 .cart-counter{
     position: relative;
+    width: 105px;
     min-height: 40px;
     display: flex;
     justify-content: center;
@@ -57,4 +59,11 @@
 
 .alert-to-cart{
     margin-top: 15px;
+}
+
+@media(max-width: 767px){
+    .add-to-cart-panel{
+        margin: 0 auto;
+        margin-top: 35px;
+    }
 }

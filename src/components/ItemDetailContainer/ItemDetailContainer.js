@@ -1,61 +1,55 @@
 import {useState, useEffect} from 'react';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
+import { useParams } from 'react-router';
+import Products from '../../assets/Products';
 import ItemDetail from '../ItemDetail/ItemDetail';
-import producto01 from '../../assets/images/producto-01.jpg';
-import producto02 from '../../assets/images/producto-02.jpg';
-import producto03 from '../../assets/images/producto-03.jpg';
 
-const ItemDetailContainer = ({idpro}) => {
+import './ItemDetailContainer.css';
+
+const ItemDetailContainer = () => {
     const [detalle, setDetalle] = useState(null);
-
-    const Products2 = [
-        {
-            id: 1,
-            title: 'Items A',
-            description: 'Programs that allow the user to have control over the computer and give support to other programs.',
-            price: '25.00',
-            pictureUrl: producto01
-        },
-        {
-            id: 2,
-            title: 'Items B',
-            description: 'Programs that allow the user to have control over the computer and give support to other programs.',
-            price: '55.00',
-            pictureUrl: producto02
-        },
-        {
-            id: 3,
-            title: 'Items C',
-            description: 'Programs that allow the user to have control over the computer and give support to other programs.',
-            price: '75.00',
-            pictureUrl: producto03
-        }
-    ]
+    const [loader, setLoader] = useState(false);
+    const { id } = useParams();
 
     useEffect(() => {
-        const task = new Promise ((resolve) => {
+        const task = new Promise ( resolve => {
+            setLoader(true);
             setTimeout(() => {
-                resolve(Products2);
-            }, 1000);
+                resolve(Products);
+            }, 2000);
         });
 
-        task.then(function (value) {
-            const result = Products2.filter(pro => pro.id == idpro);
-            setDetalle(result);
+        id ? task.then(res => {
+            setDetalle(res.filter(p => p.title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
+            setLoader(false);
+        })
+        : task.then(res => {
+            setDetalle(res);
+            setLoader(false);
         });
-    });
+    }, [id]);
 
     return (
-        <div style={{padding: "3vw 1vw"}}>
-            {detalle?.map((product2) => (
-            <ItemDetail
-                index={product2.id}
-                title={product2.title}
-                description={product2.description}
-                price={product2.price}
-                img={product2.pictureUrl}
-            />
-            ))}
-        </div>
+        <main>
+        <Container>
+            <Row>
+                <Col>
+                    <div className="details-product">
+                        {loader && <Spinner animation="border" variant="primary" />}
+                        {!loader && detalle?.map((product2) => (
+                            <ItemDetail
+                                index={product2.id}
+                                title={product2.title}
+                                description={product2.description}
+                                price={product2.price}
+                                img={product2.pictureUrl}
+                            />
+                        ))}
+                    </div>
+                </Col>
+            </Row>
+        </Container>
+        </main>
     )
 }
 

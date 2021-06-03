@@ -1,23 +1,25 @@
 import {Nav, Navbar, NavDropdown} from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import logo from "../../assets/images/logo2-ecommerce-app.png";
 import Cartwidget from '../CartWidget/CartWidget';
 
 import './NavBar.css';
 
 const Navbartop = () => {
+
     return (
         <Navbar collapseOnSelect expand="lg" variant="dark">
-            <Navbar.Brand href="#home"><img src={logo} className="logo-main" alt="logo" /></Navbar.Brand>
+            <Link to="/" className="navbar-brand"><img src={logo} className="logo-main" alt="logo" /></Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="ml-auto" style={{marginLeft: "auto"}}>
-                    <Nav.Link href="#features">Features</Nav.Link>
-                    <NavDropdown title="Categories" id="collasible-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Category one</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Category two</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Category three</NavDropdown.Item>
+                    <Link to="/" className="nav-link">Home</Link>
+                    <NavDropdown title="Productos" id="collasible-nav-dropdown">
+                        <Link to="/category/software-de-aplicacion" className="dropdown-item">Software de Aplicacion</Link>
+                        <Link to="/category/software-de-programacion" className="dropdown-item">Software de Programacion</Link>
+                        <Link to="/category/software-de-sistema" className="dropdown-item">Software de Sistema</Link>
                     </NavDropdown>
-                    <Nav.Link href="#contact">Contact</Nav.Link>
+                    <Link to="/nosotros" className="nav-link">Nosotros</Link>
                     <Cartwidget />
                 </Nav>
             </Navbar.Collapse>

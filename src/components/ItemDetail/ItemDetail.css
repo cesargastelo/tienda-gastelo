@@ -1,3 +1,38 @@
-.detail-product{
-    text-align: center;
+.inner-product{
+    display: flex;
+    align-items: center;
+    max-width: 890px;
+    margin: auto;
+}
+.detail-media{
+    max-width: 380px;
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+.detail-media img{
+    width: 100%;
+    height: auto;
+}
+.detail-info{
+    text-align: left;
+}
+.detail-info h2{
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+.detail-info h4{
+    font-weight: 700;
+    color: #0084ff;
+    margin-bottom: 25px;
+    font-size: 1.4rem;
+}
+@media(max-width: 767px){
+    .inner-product{
+        display: block;
+    }
+    .detail-info{
+        text-align: center;
+    }
 }

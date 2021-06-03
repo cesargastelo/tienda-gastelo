@@ -1,0 +1,9 @@
+footer{
+    background: 0 0/cover no-repeat,linear-gradient(60deg,#562db5,#19afc9);
+}
+
+.copyright{
+    padding: 1vw 0;
+    color: #fff;
+    font-weight: 600;
+}

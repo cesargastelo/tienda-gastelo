@@ -1,0 +1,9 @@
+.details-product{
+    padding: 70px 0;
+}
+@media(max-width: 767px){
+    .details-product{
+        padding-top: 20px;
+        padding-bottom: 50px;
+    }
+}

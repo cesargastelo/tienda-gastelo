@@ -1,9 +1,10 @@
 import {useState} from "react";
 import {Plus, Dash, Cart4} from 'react-bootstrap-icons';
+import ItemDetail from '../ItemDetail/ItemDetail';
 
 import "./ItemCount.css";
 
-const ItemCount = ({stock, initial}) => {
+const ItemCount = ({stock, initial, onConfirm}) => {
 
     const [counter, setCounter] = useState(initial);
 
@@ -31,7 +32,7 @@ const ItemCount = ({stock, initial}) => {
                 </button>
             </div>
             <div className="cart-add-btn">
-                <button className="add-list-btn"><Cart4 />Añadir al carrito</button>
+                <button className="add-list-btn" onClick={() => onConfirm(counter)}><Cart4 />Añadir al carrito</button>
             </div>
         </div>
     );

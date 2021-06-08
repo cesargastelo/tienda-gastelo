@@ -5,6 +5,7 @@ import Navbartop from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import Itemlistcontainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import AddToCart from './components/AddToCart/AddToCart';
 
 
 function App() {
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/item/:id">
             <ItemDetailContainer />
+          </Route>
+          <Route exact path="/cart/:quantity">
+            <AddToCart />
           </Route>
         </Switch>
         <Footer />

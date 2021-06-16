@@ -25,7 +25,7 @@ function App() {
           <Route exact path="/item/:id">
             <ItemDetailContainer />
           </Route>
-          <Route exact path="/cart/:quantity">
+          <Route exact path="/car">
             <AddToCart />
           </Route>
         </Switch>

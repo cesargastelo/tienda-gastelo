@@ -10,20 +10,11 @@ const ItemDetail = ({index, title, description, price, img}) => {
 
     const cart = useCart();
 
-    const [quantity, setQuantity] = useState();
-    const [btnComprar, setBtnComprar] = useState(true);
-
-    const addToCart = (quantity) => {
-        if(quantity > 0){
-            setQuantity(quantity);
-            setBtnComprar(false);
-        }else{
-            setBtnComprar(true);
-        }
-    }
+    const [quantity, setQuantity] = useState(0);
 
     const addNewProduct = (quantity) => {
-        cart.addItem({name: title,price: price, amount: quantity});
+        setQuantity(quantity);
+        cart.addItem({index: index,name: title,price: price, amount: quantity});
     }
 
     console.log(cart);
@@ -38,10 +29,10 @@ const ItemDetail = ({index, title, description, price, img}) => {
                     <h2>{title}</h2>
                     <h4>Precio: ${price}</h4>
                     <p>{description}</p>
-                    { btnComprar ?
-                    <ItemCount stock={5} initial={1} product={index} onConfirm={addToCart}/>
+                    { quantity == 0 ?
+                    <ItemCount stock={5} initial={1} product={index} addToCart={addNewProduct}/>
                     :
-                    <button onClick={() => addNewProduct(quantity)} className="place_order"><BagCheckFill/> Comprar Ahora</button>
+                    <Link to="/car" className="place_order"><BagCheckFill/> Comprar Ahora</Link>
                     }
                 </div>
             </div>

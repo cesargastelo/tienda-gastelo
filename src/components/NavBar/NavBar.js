@@ -15,9 +15,9 @@ const Navbartop = () => {
                 <Nav className="ml-auto" style={{marginLeft: "auto"}}>
                     <Link to="/" className="nav-link">Home</Link>
                     <NavDropdown title="Productos" id="collasible-nav-dropdown">
-                        <Link to="/category/software-de-aplicacion" className="dropdown-item">Software de Aplicacion</Link>
-                        <Link to="/category/software-de-programacion" className="dropdown-item">Software de Programacion</Link>
-                        <Link to="/category/software-de-sistema" className="dropdown-item">Software de Sistema</Link>
+                        <Link to="/category/aplicacion" className="dropdown-item">Software de Aplicacion</Link>
+                        <Link to="/category/programacion" className="dropdown-item">Software de Programacion</Link>
+                        <Link to="/category/sistema" className="dropdown-item">Software de Sistema</Link>
                     </NavDropdown>
                     <Link to="/nosotros" className="nav-link">Nosotros</Link>
                     <Cartwidget />

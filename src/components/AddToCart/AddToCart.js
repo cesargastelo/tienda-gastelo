@@ -36,7 +36,6 @@ const AddToCart = () => {
                 <table className="table table-bordered">
                         <thead>
                             <tr>
-                                <th>IDPRODUCTO</th>
                                 <th>PRODUCTO</th>
                                 <th>CANTIDAD</th>
                                 <th>PRECIO</th>
@@ -47,7 +46,6 @@ const AddToCart = () => {
                         <tbody>
                         {detalle?.map((x) => (
                         <tr>
-                            <td>{x.index}</td>
                             <td>{x.name}</td>
                             <td>{x.amount}</td>
                             <td>{x.price}</td>

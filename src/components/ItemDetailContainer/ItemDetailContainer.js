@@ -1,10 +1,11 @@
 import {useState, useEffect} from 'react';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
-import Products from '../../assets/Products';
 import ItemDetail from '../ItemDetail/ItemDetail';
 
 import './ItemDetailContainer.css';
+
+import { getFirestore } from '../../firebase';
 
 const ItemDetailContainer = () => {
     const [detalle, setDetalle] = useState(null);
@@ -12,22 +13,21 @@ const ItemDetailContainer = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        const task = new Promise ( resolve => {
-            setLoader(true);
-            setTimeout(() => {
-                resolve(Products);
-            }, 2000);
+        setLoader(true);
+        const db = getFirestore();
+        const itemsCollection = db.collection('items');
+        const itemFilter = itemsCollection.where('title','==', id.replace(/-/g,' ').toUpperCase());
+        itemFilter.get().then((snapshot) => {
+            if(snapshot.size === 0){
+                console.log('No resultados!');
+            }
+            setDetalle(snapshot.docs.map(doc => doc.data()));
+        }).finally(() => {
+            setLoader(false);
         });
 
-        id ? task.then(res => {
-            setDetalle(res.filter(p => p.title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
-            setLoader(false);
-        })
-        : task.then(res => {
-            setDetalle(res);
-            setLoader(false);
-        });
     }, [id]);
+
 
     return (
         <main>

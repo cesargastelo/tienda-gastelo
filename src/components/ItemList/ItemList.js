@@ -1,31 +1,42 @@
 import { useState, useEffect } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { useParams } from 'react-router';
-import Products from '../../assets/Products';
 import Item from '../Item/Item';
+
+import { getFirestore } from '../../firebase';
 
 const ItemList = () => {
     const [items, setItems] = useState([]);
     const [loader, setLoader] = useState(false);
     const { catId } = useParams();
-    
-    useEffect(() => {
-        const task = new Promise ( resolve => {
-            setLoader(true);
-            setTimeout(() => {
-                resolve(Products);
-            }, 2000);
-        });
 
-        catId ? task.then(res => {
-            setItems(res.filter(i => i.category.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-') === catId));
-            setLoader(false);
-        })
-        : task.then(res => {
-            setItems(res);
-            setLoader(false);
-        });
+    useEffect(() => {
+        setLoader(true);
+        const db = getFirestore();
+        const itemsCollection = db.collection('items');
+        if(catId){
+            const itemsFilter = itemsCollection.where('category','==',catId);
+            itemsFilter.get().then((snapshot) => {
+                if(snapshot.size === 0){
+                    console.log('No resultados!');
+                }
+                setItems(snapshot.docs.map(doc => doc.data()));
+            }).finally(() => {
+                setLoader(false);
+            });
+        }else{
+            itemsCollection.get().then((snapshot) => {
+                if(snapshot.size === 0){
+                    console.log('No resultados!');
+                }
+                setItems(snapshot.docs.map(doc => doc.data()));
+            }).finally(() => {
+                setLoader(false);
+            });
+        }
+
     }, [catId]);
+
 
     return (
         <div className="items-products">

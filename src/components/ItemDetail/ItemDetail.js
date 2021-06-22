@@ -6,7 +6,7 @@ import ItemCount from '../ItemCount/ItemCount';
 
 import './ItemDetail.css';
 
-const ItemDetail = ({index, title, description, price, img}) => {
+const ItemDetail = ({index, title, description, price, img, stock}) => {
 
     const cart = useCart();
 
@@ -14,14 +14,14 @@ const ItemDetail = ({index, title, description, price, img}) => {
 
     const addNewProduct = (quantity) => {
         setQuantity(quantity);
-        cart.addItem({index: index,name: title,price: price, amount: quantity});
+        cart.addItem({index: index,name: title,price: price, amount: quantity,image:img});
     }
 
     console.log(cart);
     
     return (
         
-            <div className="inner-product">
+            <div className="inner-product" id={index}>
                 <div className="detail-media">
                     <img src={img}/>
                 </div>
@@ -30,7 +30,7 @@ const ItemDetail = ({index, title, description, price, img}) => {
                     <h4>Precio: ${price}</h4>
                     <p>{description}</p>
                     { quantity == 0 ?
-                    <ItemCount stock={5} initial={1} product={index} addToCart={addNewProduct}/>
+                    <ItemCount stock={stock} initial={1} product={index} addToCart={addNewProduct}/>
                     :
                     <Link to="/car" className="place_order"><BagCheckFill/> Comprar Ahora</Link>
                     }

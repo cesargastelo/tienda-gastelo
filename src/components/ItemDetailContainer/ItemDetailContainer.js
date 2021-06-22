@@ -8,7 +8,7 @@ import './ItemDetailContainer.css';
 import { getFirestore } from '../../firebase';
 
 const ItemDetailContainer = () => {
-    const [detalle, setDetalle] = useState(null);
+    const [detalle, setDetalle] = useState([]);
     const [loader, setLoader] = useState(false);
     const { id } = useParams();
 
@@ -16,17 +16,19 @@ const ItemDetailContainer = () => {
         setLoader(true);
         const db = getFirestore();
         const itemsCollection = db.collection('items');
-        const itemFilter = itemsCollection.where('title','==', id.replace(/-/g,' ').toUpperCase());
-        itemFilter.get().then((snapshot) => {
-            if(snapshot.size === 0){
-                console.log('No resultados!');
-            }
-            setDetalle(snapshot.docs.map(doc => doc.data()));
+        const docs = [];
+        itemsCollection.get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                if(`${doc.data().title}` === id.replace(/-/g,' ').toUpperCase()){
+                    docs.push({ id: doc.id,  ...doc.data()});
+                }
+            });
+            setDetalle(docs);
         }).finally(() => {
             setLoader(false);
         });
 
-    }, [id]);
+    }, []);
 
 
     return (
@@ -43,6 +45,7 @@ const ItemDetailContainer = () => {
                                 description={product2.description}
                                 price={product2.price}
                                 img={product2.pictureUrl}
+                                stock={product2.stock}
                             />
                         ))}
                     </div>

@@ -1,7 +1,24 @@
-.detail-cart{
-    padding-top: 80px;
+table td{
+    position: relative;
+}
+.btn-delete-item{
+    position: absolute;
+    padding: 0;
+    line-height: 0;
+    border-radius: 50%;
+    left: 20px;
+    top: 20px;
+}
+.btn-delete-item svg{
+    width: 25px;
+    height: 25px;
 }
 .btn-all-clear{
+    text-align: right;
+    padding-top: 80px;
+    padding-bottom: 50px;
+}
+.btn-checkout{
     text-align: right;
     padding-top: 30px;
     padding-bottom: 50px;

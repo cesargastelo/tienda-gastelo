@@ -1,33 +1,71 @@
+.cart-content{
+    padding: 70px 0px;
+}
 table td{
     position: relative;
+    vertical-align: middle;
 }
 .btn-delete-item{
     position: absolute;
     padding: 0;
     line-height: 0;
     border-radius: 50%;
-    left: 20px;
-    top: 20px;
+    left: 15px;
+    top: 25px;
 }
 .btn-delete-item svg{
-    width: 25px;
-    height: 25px;
+    width: 22px;
+    height: 22px;
 }
 .btn-all-clear{
     text-align: right;
-    padding-top: 80px;
     padding-bottom: 50px;
 }
-.btn-checkout{
-    text-align: right;
+.cart-collaterals{
+    text-align: left;
     padding-top: 30px;
-    padding-bottom: 50px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
-.shop-products{
-    padding-top: 60px;
-    padding-bottom: 60px;
+.cart_totals{
+    width: 48%;
+    padding: 0 20px 20px;
+    border: 1px solid #ececec;
 }
+.cart_totals h3{
+    text-align: center;
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 12px;
+    font-size: 18px;
+    font-weight: 700;
+}
+.proceed-to-checkout a{
+    width: 100%;
+    padding: 10px 12px;
+}
+
 .shop-products h1{
     padding: 0;
     margin-bottom: 40px;
+}
+
+@media(max-width: 991px){
+    .btn-delete-item{
+        left: 5px;
+        top: 30px;
+    }
+    .btn-delete-item svg{
+        width: 15px;
+        height: 15px;
+    }
+    .cart_totals{
+        width: 50%;
+    }
+}
+@media(max-width: 767px){
+    .cart_totals{
+        width: 100%;
+    }
 }

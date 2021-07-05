@@ -14,13 +14,17 @@ const ItemList = () => {
         setLoader(true);
         const db = getFirestore();
         const itemsCollection = db.collection('items');
+        const docs = [];
         if(catId){
             const itemsFilter = itemsCollection.where('category','==',catId);
             itemsFilter.get().then((snapshot) => {
                 if(snapshot.size === 0){
                     console.log('No resultados!');
                 }
-                setItems(snapshot.docs.map(doc => doc.data()));
+                snapshot.forEach((doc)=>{
+                    docs.push({id:doc.id, ...doc.data()})
+                })
+                setItems(docs);
             }).finally(() => {
                 setLoader(false);
             });
@@ -29,7 +33,10 @@ const ItemList = () => {
                 if(snapshot.size === 0){
                     console.log('No resultados!');
                 }
-                setItems(snapshot.docs.map(doc => doc.data()));
+                snapshot.forEach((doc)=>{
+                    docs.push({id:doc.id, ...doc.data()})
+                })
+                setItems(docs);
             }).finally(() => {
                 setLoader(false);
             });

@@ -15,7 +15,6 @@ export const CartProvider = ({children}) => {
 
         if(result.length == 0){
             setCart({ ...cart, addItems: [...cart.addItems, item], quantity:(cantQuantity+item.amount), total:(total+(item.price*item.amount))});
-            console.log("Se añadio al carrito");
         }else{
             cart.addItems.forEach(
                 function (elemento) {

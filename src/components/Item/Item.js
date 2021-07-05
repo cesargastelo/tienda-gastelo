@@ -5,7 +5,7 @@ import './Item.css';
 
 const Item = ({index, title, price, img}) => {
 
-    const slugName = title.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+    const slugId = index;
 
     return (
         <Card idproduct={index}>
@@ -13,7 +13,7 @@ const Item = ({index, title, price, img}) => {
             <Card.Body>
                 <Card.Title>{title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">${price}</Card.Subtitle>
-                <Link to={"/item/" + slugName} className="btn btn-primary">Ver detalle</Link>
+                <Link to={"/item/" + slugId} className="btn btn-primary">Ver detalle</Link>
             </Card.Body>
         </Card>
     )

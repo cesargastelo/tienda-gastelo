@@ -1,0 +1,48 @@
+form{
+    text-align: left;
+    padding: 60px 0;
+}
+form h2{
+    margin-bottom: 50px;
+    padding: 15px 12px;
+    background: #cce5ff;
+    border-left: 7px solid #b8daff;
+    color: #004085;
+    font-size: 22px;
+}
+.form-group{
+    margin-bottom: 30px;
+}
+
+.order-details{
+    border: 1px solid #d6d8db;
+    border-radius: 4px;
+    padding: 20px 15px;
+    background: #e2e3e5;
+}
+
+.btn-order{
+    padding-top: 20px;
+}
+.btn-order button{
+    width: 100%;
+    background: #27b749;
+    border: 0;
+    border-radius: 3px;
+    padding: 12px 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 18px;
+    transition: all 0.6s;
+}
+.btn-order button:hover{
+    background: #1cac3e;
+}
+
+.notification-alert{
+    padding: 60px 0;
+}
+.notification-alert h1{
+    padding: 0;
+    margin-bottom: 40px;
+}
